@@ -1,0 +1,26 @@
+name: Streamlit CI Pipeline
+on: [push, pull_request]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Ruff (Security & Style Linting)
+        run: ruff check .
+
+      - name: App Smoke Test
+        uses: streamlit/streamlit-app-action@v0.0.3
+        with:
+          app-path: streamlit_app.py
