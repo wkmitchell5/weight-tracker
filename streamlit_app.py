@@ -4,7 +4,7 @@ import plotly.express as px
 
 conn = st.connection("snowflake")
 
-st.title("🏆 Mitchell & Friends Weight Loss")
+st.title("Bill's Biggest Loser Competition")
 
 # Form for entry
 with st.sidebar:
